@@ -180,20 +180,30 @@
 
     /* Mobile: dưới 768px — hamburger menu */
     @media (max-width: 768px) {
-        .navbar .container {
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
         .nav-links {
-            justify-content: center;
-            flex-wrap: wrap;    /* 4 item → 2 hàng */
-            gap: 2px 10px;
-            margin-right: 10;
+        display: none; /* 👈 ẨN */
         }
 
-        .nav-links a {
-            font-size: 8px;
+        .nav-toggle {
+        display: flex; /* 👈 HIỆN hamburger */
+        }
+        .navbar .container {
+        flex-wrap: nowrap; /* 👈 QUAN TRỌNG */
+        }
+        .logo {
+        height: 24px;
+        padding: 0 6px;
+        }
+        .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(30,30,36,0.95);
+        padding: 20px;
+        gap: 16px;
         }
     }
 
