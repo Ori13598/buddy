@@ -173,6 +173,8 @@ button { font-family: var(--font-main); cursor: pointer; }
     .nav-links a {
         font-size: 12px;
     }
+    
+    .logo { height: 20px; width: auto;}
 }
 
 /* Mobile: dưới 768px — hamburger menu */
@@ -192,6 +194,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     .nav-links a {
         font-size: 8px;
     }
+    .logo { height: 10px; width: auto;}
 }
 
 /* ============================================
@@ -941,7 +944,7 @@ button { font-family: var(--font-main); cursor: pointer; }
 /* ============================================
    店舗情報
    ============================================ */
-.店舗情報の枠 {
+.brand {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -949,8 +952,8 @@ button { font-family: var(--font-main); cursor: pointer; }
     background: var(--color-bg-soft);
 }
 
-.店舗情報の言葉 {
-    font-size: 11px;
+.brand-title {
+    font-size: 18px;
     font-weight: 700;
     color: var(--color-accent);
     letter-spacing: 4px;
@@ -958,17 +961,13 @@ button { font-family: var(--font-main); cursor: pointer; }
     margin-bottom: 12px;
 }
 
-.店舗情報項目名の内容 {
-    font-size: clamp(20px, 3vw, 30px);
-    font-weight: 700;
-    color: var(--color-navy);
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+.brand-word { 
+    font-size: 14px; 
+    color: var(--color-text-sub);
+    margin-bottom: 30px;
 }
 
-.店舗情報の内容 { font-size: 14px; color: var(--color-text-sub); }
-
-.店舗情報コンテンツ {
+.brand-content {
     width: 100%;
     max-width: 1400px;
     display: grid;
@@ -977,7 +976,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     margin-bottom: 20px;
 }
 
-.店舗情報コンテンツの理由 {
+.brand-content-brand {
     display: flex;
     flex-direction: column;
     background: var(--color-white);
@@ -990,13 +989,13 @@ button { font-family: var(--font-main); cursor: pointer; }
     box-shadow: var(--shadow-sm);
 }
 
-.店舗情報コンテンツの理由:hover {
+.brand-content-brand:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-lg);
     border-color: var(--color-accent);
 }
 
-.店舗情報の番号バッジ {
+.brand-content-brand-div {
     display: inline-block;
     font-size: 10px;
     font-weight: 700;
@@ -1008,28 +1007,28 @@ button { font-family: var(--font-main); cursor: pointer; }
     margin-bottom: 12px;
     width: fit-content;
 }
-.店舗情報コンテンツの理由:first-child .店舗情報の番号バッジ { background: var(--color-navy); }
+.brand-content-brand:first-child .brand-content-brand-div { background: var(--color-navy); }
 
-.店舗情報の理由の番号 { font-size: 15px; font-weight: 700; color: var(--color-navy); margin-bottom: 8px; }
-.店舗情報の理由の見出し { font-size: 12px; color: var(--color-text-sub); line-height: 1.8; margin-bottom: 8px; flex-grow: 1; }
-.店舗情報の理由の内容 { font-size: 12px; color: var(--color-text-main); font-weight: 500; margin-bottom: 12px; }
-.店舗情報のマップリンク { font-size: 12px; color: var(--color-accent); font-weight: 600; transition: letter-spacing 0.3s ease; }
-.店舗情報コンテンツの理由:hover .店舗情報のマップリンク { letter-spacing: 1.5px; }
+.brand-content-brand-name { font-size: 15px; font-weight: 700; color: var(--color-navy); margin-bottom: 8px; }
+.brand-content-brand-address { font-size: 12px; color: var(--color-text-sub); line-height: 1.8; margin-bottom: 8px; flex-grow: 1; }
+.brand-content-brand-phone { font-size: 12px; color: var(--color-text-main); font-weight: 500; margin-bottom: 12px; }
+.brand-content-brand-maplink{ font-size: 12px; color: var(--color-accent); font-weight: 600; transition: letter-spacing 0.3s ease; }
+.brand-content-brand:hover .brand-content-brand-maplink { letter-spacing: 1.5px; }
 
 @media (max-width: 1200px) {
-    .店舗情報コンテンツ { grid-template-columns: repeat(3, 1fr); }
-    .店舗情報コンテンツの理由:nth-child(4) { margin-left: calc(10％ + 8px); }
+    .brand-content { grid-template-columns: repeat(3, 1fr); }
+    .brand-content-brand:nth-child(4) { margin-left: calc(10％ + 8px); }
 }
 @media (max-width: 768px) {
-    .店舗情報の枠 { padding: 60px 16px; }
-    .店舗情報コンテンツ { grid-template-columns: repeat(2, 1fr); }
-    .店舗情報コンテンツの理由:nth-child(4) { margin-left: 0; grid-column: auto; }
-    .店舗情報コンテンツの理由:nth-child(5) {margin-left: 0; grid-column: auto; }
+    .brand { padding: 60px 16px; }
+    .brand-content { grid-template-columns: repeat(2, 1fr); }
+    .brand-content-brand:nth-child(4) { margin-left: 0; grid-column: auto; }
+    .brand-content-brand:nth-child(5) {margin-left: 0; grid-column: auto; }
 }
 @media (max-width: 480px) {
-    .店舗情報コンテンツ { grid-template-columns: 1fr; }
-    .店舗情報コンテンツの理由:nth-child(4),
-    .店舗情報コンテンツの理由:nth-child(5) { margin-left: 0; grid-column: auto; }
+    .brand-content { grid-template-columns: 1fr; }
+    .brand-content-brand:nth-child(4),
+    .brand-content-brand:nth-child(5) { margin-left: 0; grid-column: auto; }
 }
 
 /* ============================================
