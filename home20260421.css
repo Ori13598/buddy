@@ -175,6 +175,13 @@ button { font-family: var(--font-main); cursor: pointer; }
     }
     
     .logo { height: 20px; width: auto;}
+    .logo img {
+    height: 100%;
+    width: auto;   /* 👈 QUAN TRỌNG */
+    display: block;
+    border-radius: 10px;
+    padding: 0;    /* 👈 bỏ padding */
+}
 }
 
 /* Mobile: dưới 768px — hamburger menu */
@@ -194,7 +201,8 @@ button { font-family: var(--font-main); cursor: pointer; }
     .nav-links a {
         font-size: 8px;
     }
-    .logo { height: 10px; width: auto;}
+    .logo { height: 10px; width: auto;
+            flex-shrink: 0;}
 }
 
 /* ============================================
