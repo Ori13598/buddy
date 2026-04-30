@@ -181,10 +181,13 @@
     /* Mobile: dưới 768px — hamburger menu */
     @media (max-width: 768px) {
         .nav-toggle {
-        display: flex; /* 👈 hiện ra */
+        display: flex !important; /* ép hiện */
+        position: relative;
+        z-index: 100;
         }
+
         .nav-links {
-        display: none; /* 👈 ẨN */
+        display: none !important; /* ẩn menu cũ */
         }
 
         .nav-toggle {
