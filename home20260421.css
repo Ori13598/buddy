@@ -180,6 +180,9 @@
 
     /* Mobile: dưới 768px — hamburger menu */
     @media (max-width: 768px) {
+        .nav-toggle {
+        display: flex; /* 👈 hiện ra */
+        }
         .nav-links {
         display: none; /* 👈 ẨN */
         }
