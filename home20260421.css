@@ -186,7 +186,7 @@
         z-index: 100;
         }
         .nav-toggle span {
-        width: 20px;
+        width: auto;
         height: 2px;
         background: var(--text-primary);
         z-index: 100;    
