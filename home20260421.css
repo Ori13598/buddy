@@ -18,7 +18,7 @@
     --color-border-soft: #f0f2f5;
     --color-white:       #ffffff;
     --font-main:         'Noto Sans JP', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
-    --section-pad-y:     100px;
+    --section-pad-y:     60px;
     --section-pad-x:     clamp(20px, 5vw, 80px);
     --container-max:     1200px;
     --radius-sm:         6px;
@@ -120,55 +120,17 @@ button { font-family: var(--font-main); cursor: pointer; }
         }
 
         .nav-actions { display: flex; align-items: center; gap: 10px; }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 22px;
-            border-radius: var(--radius-pill);
-            font-family: inherit;
-            font-size: 13.5px;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s ease;
-            letter-spacing: -0.01em;
-        }
-
-        .btn-ghost { background: transparent; color: var(--text-secondary); }
-        .btn-ghost:hover { color: var(--text-primary); }
-
-        .btn-primary {
-            background: var(--accent);
-            color: #fff;
-            box-shadow: 0 0 24px var(--accent-glow),
-                        0 1px 0 rgba(255,255,255,0.1) inset;
-        }
-
-        .btn-primary:hover {
-            background: #FF8585;
-            box-shadow: 0 0 36px var(--accent-glow),
-                        0 1px 0 rgba(255,255,255,0.15) inset;
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background: rgba(255,255,255,0.05);
-            color: var(--text-primary);
-            border: 1px solid var(--border-subtle);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.08);
-            border-color: rgba(255,255,255,0.1);
-        }
-
-        .btn-lg { padding: 14px 32px; font-size: 14.5px; }
-
-        .btn-primary .btn-arrow { transition: transform 0.3s; }
-        .btn-primary:hover .btn-arrow { transform: translateX(3px); }
+        .logo { height: 30px; width: auto;}
+        .logo img{
+            height: 100%;
+            width: auto;
+            background-color: rgb(228, 232, 240,0.2);
+            width: 100%;
+            display:block;
+            border-radius: 10px;
+            padding-right: 10px;
+            padding-left: 3px;
+         }
 
         .nav-toggle {
             display: none;
@@ -192,25 +154,65 @@ button { font-family: var(--font-main); cursor: pointer; }
         .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
         .nav-toggle.active span:nth-child(2) { opacity: 0; }
         .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+/* ===== NAVBAR RESPONSIVE ===== */
 
+/* Tablet: 768px - 1024px — 2 hàng, chữ nhỏ lại */
+@media (max-width: 1024px) {
+    .navbar .container {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;    /* 4 item → 2 hàng */
+        gap: 4px 20px;
+        margin-right: 10;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+}
+
+/* Mobile: dưới 768px — hamburger menu */
+@media (max-width: 768px) {
+    .navbar .container {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .nav-links {
+        justify-content: center;
+        flex-wrap: wrap;    /* 4 item → 2 hàng */
+        gap: 2px 10px;
+        margin-right: 10;
+    }
+
+    .nav-links a {
+        font-size: 8px;
+    }
+}
 
 /* ============================================
    ヘッダー
    ============================================ */
-.ヘッダー {
+.header{
     display: flex;
     flex-direction: column;
     align-items: center;
     background: var(--color-bg);
 }
 
-.会社の言葉 {
+.header-companyworddiv{
     height: 100vh;
     width: 100%;
     overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .bg-video {
@@ -221,7 +223,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     z-index: 0;
 }
 
-.会社の言葉::after {
+.header-companyworddiv::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -229,127 +231,90 @@ button { font-family: var(--font-main); cursor: pointer; }
     z-index: 1;
 }
 
-.ロゴ社名ボタン {
-    height: 72px;
-    display: flex;
-    align-items: center;
-    padding: 0 40px;
-    position: relative;
-    z-index: 2;
-}
-
-.ロゴ { height: 38px; width: auto; }
-.ロゴの写真 { height: 100%; width: auto; display: block; }
-
-.ボタン {
-    height: 44px;
-    width: 140px;
-    margin-left: auto;
-    background: var(--color-accent);
-    border-radius: var(--radius-sm);
-}
-
-.会社の言葉1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    position: relative;
-    z-index: 2;
-    padding: 0 20px;
-    text-align: center;
-}
-
-.言葉１ {
+.header-companyworddiv-word1 {
     color: var(--color-white);
     font-weight: 800;
     font-size: clamp(32px, 5vw, 72px);
     letter-spacing: 2px;
     margin-bottom: 8px;
     line-height: 1.1;
+    z-index: 2;
 }
 
-.言葉２ {
+.header-companyworddiv-word2 {
     color: var(--color-white);
     font-size: clamp(22px, 3.5vw, 52px);
     font-weight: 300;
     letter-spacing: 2px;
     margin-bottom: 20px;
     opacity: 0.9;
+    z-index: 2;
 }
 
-.言葉３ {
+.header-companyworddiv-word3 {
     color: rgba(255, 255, 255, 0.75);
     font-size: clamp(13px, 1.5vw, 17px);
     letter-spacing: 4px;
+    z-index: 2;
 }
 
 /* ============================================
    コンセプト
    ============================================ */
-.コンセプト枠 {
+.header-conceptdiv {
     width: 100%;
     background: var(--color-bg);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 var(--section-pad-x) 80px;
+    padding: 0 var(--section-pad-x) 60px;
     position: relative;
     z-index: 3;
 }
 
-.コンセプト {
+.header-conceptdiv-concept{
     background: var(--color-white);
     width: 100%;
     max-width: 1000px;
     display: flex;
     flex-direction: column;
-    margin-top: -80px;
+    align-items: center;
+    margin-top: -100px;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
     overflow: hidden;
     position: relative;
     z-index: 4;
-    backdrop-filter: blur(30px);
-    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(50px);
+    background: rgba(247, 247, 247, 0.95);
 }
 
-.項目名 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 36px 40px 0;
-    position: relative;
-}
-
-.言葉 {
+.divname {
     font-size: 11px;
     font-weight: 700;
     color: var(--color-accent);
     letter-spacing: 4px;
     text-transform: uppercase;
-    margin-bottom: 6px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
     position: static;
     transform: none;
     left: auto;
     top: auto;
+    z-index: 3;
 }
 
-.bottom { height: 20px; margin-bottom: 10px; }
+.header-conceptdiv-concept-contentdiv { 
+    display: flex; 
+    flex-direction: row; 
+}
 
-.コンセプトコンテンツ { display: flex; flex-direction: row; }
-
-.コンテンツ子 {
+.header-conceptdiv-concept-contentdiv-content {
     width: 50%;
     display: flex;
     flex-direction: column;
     padding: 32px 40px 40px;
-}
-.コンセプトの言葉 {
-    font-size: 11px;
-    font-weight: 700;
     color: var(--color-accent);
     letter-spacing: 4px;
     text-transform: uppercase;
@@ -359,7 +324,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     left: auto;
     top: auto;
 }
-.見出し {
+.header-conceptdiv-concept-contentdiv-content-title {
     font-size: clamp(18px, 2.5vw, 26px);
     font-weight: 700;
     color: var(--color-navy);
@@ -368,49 +333,53 @@ button { font-family: var(--font-main); cursor: pointer; }
     margin-bottom: 20px;
 }
 
-.内容 {
+.header-conceptdiv-concept-contentdiv-content-word {
     font-size: 14px;
     color: var(--color-text-sub);
     line-height: 2;
 }
 
-.コンセプト写真 {
+.header-conceptdiv-concept-contentdiv-img {
     width: 50%;
     min-height: 320px;
     overflow: hidden;
-    border-radius: 10px;
-    margin-right: 5px;
+    border-radius: 15px;
     margin-bottom: 5px;
+    margin-right: 5px;
 }
 
-.コンセプト写真 img {
+.header-conceptdiv-concept-contentdiv-img img {
     width: 100%; height: 100%;
+    border-radius: 15px;
     object-fit: cover;
     display: block;
     transition: transform 0.6s var(--ease);
 }
-.コンセプト写真 img:hover { transform: scale(1.04); }
+.header-conceptdiv-concept-contentdiv-img img:hover { transform: scale(1.04); }
 
 @media (max-width: 1024px) {
-    .コンセプト { margin-top: -60px; }
-    .コンセプトコンテンツ { flex-direction: column-reverse; align-items: center; }
-    .コンテンツ子 { width: 100%; padding: 28px 32px; }
-    .コンセプト写真 { width: 100%; min-height: 260px; }
+    .header-conceptdiv-concept { margin-top: -60px; }
+    .header-conceptdiv-concept-contentdiv { flex-direction: column-reverse; align-items: center; }
+    .header-conceptdiv-concept-contentdiv-content { width: 100%; padding: 28px 32px; }
+    .header-conceptdiv-concept-contentdiv-img { 
+        width: 98%; 
+        min-height: 260px; 
+        margin-left: 5px;
+    }
 }
 @media (max-width: 768px) {
-    .ロゴ社名ボタン { padding: 0 20px; }
-    .コンセプト枠 { padding: 0 16px 60px; }
-    .コンセプト { margin-top: -40px; }
-    .コンテンツ子 { padding: 20px; }
-    .見出し { font-size: 18px; }
-    .内容 { font-size: 13px; }
-    .コンセプト写真 { min-height: 200px; }
+    .header-conceptdiv { padding: 0 16px 60px; }
+    .header-conceptdiv-concept { margin-top: -40px; }
+    .header-conceptdiv-concept-contentdiv { padding: 20px; }
+    .header-conceptdiv-concept-contentdiv-content-title { font-size: 18px; }
+    .header-conceptdiv-concept-contentdiv-content-word { font-size: 13px; }
+    .header-conceptdiv-concept-contentdiv-img { min-height: 200px; }
 }
 
 /* ============================================
    選択理由
    ============================================ */
-.選択理由 {
+.select_reason {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -419,7 +388,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     padding: var(--section-pad-y) var(--section-pad-x);
 }
 
-.選択理由の背景の写真 {
+.select_reason-bg_img {
     position: absolute;
     inset: 0;
     width: 100%; height: 100%;
@@ -427,7 +396,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     z-index: 0;
 }
 
-.選択理由::before {
+.select_reason::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -435,24 +404,26 @@ button { font-family: var(--font-main); cursor: pointer; }
     z-index: 1;
 }
 
-.選択理由 .項目名 {
+.select_reason .divname {
     position: relative;
     z-index: 2;
-    padding: 0 0 48px;
+    padding: 0 0 10px;
 }
 
-.選択理由項目名の内容 {
+.select_reason-word {
     color: var(--color-white);
     font-size: clamp(18px, 3vw, 34px);
     font-weight: 700;
     letter-spacing: 2px;
     text-align: center;
     margin-top: 8px;
+    margin-bottom: 40px;
     white-space: nowrap;
     padding-top: 0;
+    z-index: 2;
 }
 
-.選択理由コンテンツ {
+.select_reason-contentdiv {
     width: 100%;
     max-width: var(--container-max);
     display: flex;
@@ -463,7 +434,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     justify-content: center;
 }
 
-.選択理由コンテンツの理由 {
+.select_reason-contentdiv-content {
     flex: 1 1 280px;
     max-width: 360px;
     background: rgba(255, 255, 255, 0.97);
@@ -475,9 +446,9 @@ button { font-family: var(--font-main); cursor: pointer; }
     transition: transform var(--duration) var(--ease);
     border-top: 3px solid var(--color-accent);
 }
-.選択理由コンテンツの理由:hover { transform: translateY(-6px); }
+.select_reason-contentdiv-content:hover { transform: translateY(-6px); }
 
-.選択理由の理由の番号 {
+.select_reason-contentdiv-content-No {
     font-size: 40px;
     font-weight: 800;
     color: var(--color-accent);
@@ -487,7 +458,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     opacity: 0.5;
 }
 
-.選択理由の理由の見出し {
+.select_reason-contentdiv-content-title {
     font-size: 17px;
     font-weight: 700;
     color: var(--color-navy);
@@ -495,7 +466,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     letter-spacing: 0.5px;
 }
 
-.選択理由の理由の内容 {
+.select_reason-contentdiv-content-word {
     font-size: 13px;
     color: var(--color-text-sub);
     line-height: 1.9;
@@ -504,12 +475,12 @@ button { font-family: var(--font-main); cursor: pointer; }
 /* ============================================
    サービス
    ============================================ */
-.section {
+.service {
     padding: var(--section-pad-y) var(--section-pad-x);
     background: var(--color-bg-soft);
 }
 
-.section__header {
+.service-header {
     width: 100%;
     max-width: var(--container-max);
     margin: 0 auto 36px;
@@ -520,7 +491,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     position: relative;
 }
 
-.section__title {
+.service-header-title {
     font-size: clamp(20px, 3vw, 34px);
     font-weight: 700;
     color: var(--color-navy);
@@ -531,7 +502,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     white-space: nowrap;
 }
 
-.seasonal-tabs {
+.service-tabs {
     display: flex;
     gap: 8px;
     margin: 0 auto 28px;
@@ -540,7 +511,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     flex-wrap: wrap;
 }
 
-.seasonal-tab {
+.service-tab {
     flex: 1 1 180px;
     padding: 14px 12px;
     background: var(--color-white);
@@ -554,21 +525,21 @@ button { font-family: var(--font-main); cursor: pointer; }
     text-align: center;
 }
 
-.seasonal-tab__icon {
+.service-tab__icon {
     display: block;
     font-size: 1.4rem;
     margin-bottom: 6px;
 }
 
-.seasonal-tab:hover { border-color: var(--color-navy); color: var(--color-navy); }
+.service-tab:hover { border-color: var(--color-navy); color: var(--color-navy); }
 
-.seasonal-tab.is-active { background: var(--color-navy); border-color: var(--color-navy); color: var(--color-white); }
-.seasonal-tab.is-active[data-season="spring"],
-.seasonal-tab.is-active[data-season="summer"],
-.seasonal-tab.is-active[data-season="autumn"],
-.seasonal-tab.is-active[data-season="winter"] { background: var(--color-navy); border-color: var(--color-navy); }
+.service-tab.is-active { background: var(--color-navy); border-color: var(--color-navy); color: var(--color-white); }
+.service-tab.is-active[data-season="spring"],
+.service-tab.is-active[data-season="summer"],
+.service-tab.is-active[data-season="autumn"],
+.service-tab.is-active[data-season="winter"] { background: var(--color-navy); border-color: var(--color-navy); }
 
-.seasonal-panels {
+.service-panels {
     position: relative;
     overflow: hidden;
     border-radius: var(--radius-lg);
@@ -577,15 +548,15 @@ button { font-family: var(--font-main); cursor: pointer; }
     margin: 0 auto;
 }
 
-.seasonal-panel { display: none; animation: seasonFadeIn 0.4s var(--ease); }
-.seasonal-panel.is-active { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+.service-panel { display: none; animation: seasonFadeIn 0.4s var(--ease); }
+.service-panel.is-active { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
 
 @keyframes seasonFadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-.seasonal-panel__visual {
+.service-panel__visual {
     position: relative;
     min-height: 360px;
     display: flex;
@@ -594,16 +565,16 @@ button { font-family: var(--font-main); cursor: pointer; }
     overflow: hidden;
 }
 
-.seasonal-panel__visual img {
+.service-panel__visual img {
     position: absolute;
     inset: 0;
     width: 100%; height: 100%;
     object-fit: cover;
     transition: transform 0.6s var(--ease);
 }
-.seasonal-panel__visual:hover img { transform: scale(1.04); }
+.service-panel__visual:hover img { transform: scale(1.04); }
 
-.seasonal-panel__visual::after {
+.service-panel__visual::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -612,7 +583,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     z-index: 1;
 }
 
-.seasonal-panel__badge {
+.service-panel__badge {
     position: relative;
     z-index: 2;
     display: inline-block;
@@ -627,7 +598,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     color: #fff;
 }
 
-.seasonal-panel__details {
+.service-panel__details {
     padding: clamp(28px, 4vw, 48px);
     background: var(--color-white);
     display: flex;
@@ -635,7 +606,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     justify-content: center;
 }
 
-.seasonal-panel__season-label {
+.service-panel__season-label {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 4px;
@@ -644,7 +615,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     margin-bottom: 12px;
 }
 
-.seasonal-panel__name {
+.service-panel__name {
     font-size: clamp(20px, 3vw, 30px);
     font-weight: 700;
     color: var(--color-navy);
@@ -653,16 +624,16 @@ button { font-family: var(--font-main); cursor: pointer; }
     line-height: 1.3;
 }
 
-.seasonal-panel__desc {
+.service-panel__desc {
     font-size: 14px;
     color: var(--color-text-sub);
     line-height: 1.9;
     margin-bottom: 24px;
 }
 
-.seasonal-panel__meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.service-panel__meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
 
-.seasonal-panel__meta-tag {
+.service-panel__meta-tag {
     display: inline-flex;
     align-items: center;
     gap: 5px;
@@ -675,7 +646,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     color: var(--color-navy);
 }
 
-.seasonal-panel__cta { align-self: flex-start; }
+.service-panel__cta { align-self: flex-start; }
 
 .btn, .btn--primary {
     display: inline-flex;
@@ -696,16 +667,16 @@ button { font-family: var(--font-main); cursor: pointer; }
 .btn--primary:hover { background: transparent; color: var(--color-navy); }
 
 @media (max-width: 1024px) {
-    .seasonal-panel.is-active { grid-template-columns: 1fr; }
-    .seasonal-panel__visual { min-height: 240px; }
+    .service-panel.is-active { grid-template-columns: 1fr; }
+    .service-panel__visual { min-height: 240px; }
 }
 @media (max-width: 640px) {
-    .section { padding: 60px 16px; }
-    .seasonal-tabs { gap: 6px; }
-    .seasonal-tab { padding: 12px 8px; font-size: 12px; flex: 1 1 130px; }
-    .seasonal-tab__icon { font-size: 1.2rem; }
-    .seasonal-panel__visual { min-height: 180px; }
-    .seasonal-panel__details { padding: 24px; }
+    .service { padding: 60px 16px; }
+    .service-tabs { gap: 6px; }
+    .service-tab { padding: 12px 8px; font-size: 12px; flex: 1 1 130px; }
+    .service-tab__icon { font-size: 1.2rem; }
+    .service-panel__visual { min-height: 180px; }
+    .service-panel__details { padding: 24px; }
 }
 
 /* ============================================
@@ -884,18 +855,19 @@ button { font-family: var(--font-main); cursor: pointer; }
 /* ============================================
    ビジョン
    ============================================ */
-.ビージョン {
+.vision {
     min-height: 100vh;
     width: 100%;
     overflow: hidden;
     position: relative;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 80px var(--section-pad-x);
 }
 
-.ビージョン img {
+.vision img {
     position: absolute;
     inset: 0;
     width: 100%; height: 100%;
@@ -903,7 +875,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     object-fit: cover;
 }
 
-.ビージョン::before {
+.vision::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -911,7 +883,9 @@ button { font-family: var(--font-main); cursor: pointer; }
     z-index: 1;
 }
 
-.ビージョンの言葉 {
+
+.vision-div {
+    margin-top: 30px;
     position: relative;
     z-index: 2;
     display: grid;
@@ -925,7 +899,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     border: 1px solid rgba(255,255,255,0.12);
 }
 
-.ビージョンの各枠 {
+.vision-div-contentdiv {
     background: rgba(255, 255, 255, 0.04);
     display: flex;
     flex-direction: column;
@@ -935,11 +909,11 @@ button { font-family: var(--font-main); cursor: pointer; }
     transition: background 0.3s ease;
     border-right: 1px solid rgba(255,255,255,0.08);
 }
-.ビージョンの各枠:last-child { border-right: none; }
-.ビージョンの各枠:hover { background: rgba(255, 255, 255, 0.08); }
+.vision-div-contentdiv:last-child { border-right: none; }
+.vision-div-contentdiv:hover { background: rgba(255, 255, 255, 0.08); }
 
-.ビージョン言葉１ {
-    font-size: clamp(14px, 1.8vw, 20px);
+.vision-div-contentdiv-title {
+    font-size: clamp(18px, 1.8vw, 26px);
     font-weight: 700;
     color: var(--color-accent);
     letter-spacing: 3px;
@@ -950,7 +924,7 @@ button { font-family: var(--font-main); cursor: pointer; }
     width: 100%;
 }
 
-.ビージョン言葉３ {
+.vision-div-contentdiv-word {
     font-size: clamp(12px, 1.2vw, 14px);
     color: rgba(255, 255, 255, 0.8);
     line-height: 2;
@@ -958,9 +932,10 @@ button { font-family: var(--font-main); cursor: pointer; }
 }
 
 @media (max-width: 900px) {
-    .ビージョンの言葉 { grid-template-columns: 1fr; }
-    .ビージョンの各枠 { padding: 36px 24px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .ビージョンの各枠:last-child { border-bottom: none; }
+    .vision-div { grid-template-columns: 1fr;
+    width: 90%;}
+    .vision-div-contentdiv { padding: 24px 24px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .vision-div-contentdiv:last-child { border-bottom: none; }
 }
 
 /* ============================================
@@ -972,15 +947,6 @@ button { font-family: var(--font-main); cursor: pointer; }
     align-items: center;
     padding: var(--section-pad-y) var(--section-pad-x);
     background: var(--color-bg-soft);
-}
-
-.店舗情報の項目名 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 48px;
-    text-align: center;
 }
 
 .店舗情報の言葉 {
@@ -1052,13 +1018,13 @@ button { font-family: var(--font-main); cursor: pointer; }
 
 @media (max-width: 1200px) {
     .店舗情報コンテンツ { grid-template-columns: repeat(3, 1fr); }
-    .店舗情報コンテンツの理由:nth-child(4) { margin-left: calc(50% + 8px); }
+    .店舗情報コンテンツの理由:nth-child(4) { margin-left: calc(10％ + 8px); }
 }
 @media (max-width: 768px) {
     .店舗情報の枠 { padding: 60px 16px; }
     .店舗情報コンテンツ { grid-template-columns: repeat(2, 1fr); }
-    .店舗情報コンテンツの理由:nth-child(4) { margin-left: 0; }
-    .店舗情報コンテンツの理由:nth-child(5) { grid-column: 1 / 2; margin-left: calc(50% + 8px); }
+    .店舗情報コンテンツの理由:nth-child(4) { margin-left: 0; grid-column: auto; }
+    .店舗情報コンテンツの理由:nth-child(5) {margin-left: 0; grid-column: auto; }
 }
 @media (max-width: 480px) {
     .店舗情報コンテンツ { grid-template-columns: 1fr; }
