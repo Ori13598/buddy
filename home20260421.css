@@ -185,7 +185,12 @@
         position: relative;
         z-index: 100;
         }
-
+        .nav-toggle span {
+        width: 20px;
+        height: 2px;
+        background: var(--text-primary);
+        z-index: 100;    
+        }
         .nav-links {
         display: none !important; /* ẩn menu cũ */
         }
